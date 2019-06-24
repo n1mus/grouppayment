@@ -5,4 +5,4 @@ Still in production phase so send all the bugs! Also, narrow usage goals so not 
 
 Usage:
 
-python groupPayment.py --names Alice Bob Candice --deposits 100 150.5 40.66
+python groupPayment.py --names Akash Bob Cixun --deposits 100 150.5 40.66
