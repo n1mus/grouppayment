@@ -6,8 +6,9 @@ Still in production phase so send all the bugs! Also, narrow usage goals so not 
 
 #### Usage:
 
+<pre>
 python groupPayment.py --names Akash Bob Cixun David Esther --deposits 100 150.5 40.66 300 300
-<pre>[&apos;Akash&apos;, &apos;Bob&apos;, &apos;Cixun&apos;, &apos;David&apos;, &apos;Esther&apos;]
+[&apos;Akash&apos;, &apos;Bob&apos;, &apos;Cixun&apos;, &apos;David&apos;, &apos;Esther&apos;]
 [100.0, 150.5, 40.66, 300.0, 300.0]
 ORIGINAL UNIDIRECTIONAL GRAPH
 [&apos;Akash&apos;, &apos;Bob&apos;, &apos;Cixun&apos;, &apos;David&apos;, &apos;Esther&apos;]
