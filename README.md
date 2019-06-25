@@ -40,6 +40,7 @@ David gives Bob 2.1680000000000064
 ----- done -----
 
 
+
 #### Verification:
 
 Verification is simple. If you make a graph of who owes whom what after splitting the deposits, the total flow in and out of a node should be the same before and after running the simplification process. In other words, everyone ends up with the same net payment.
