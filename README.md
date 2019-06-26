@@ -1,5 +1,5 @@
 # grouppayment
-Simplifying splitting the bills among a group
+You go out with a group of friends, and everyone covers a different purchase with a deposit. How do you Venmo each other back? You could split each deposit by $n$ and make $2*frac{(n*(n+1),2}$ transactions. Or you could simplify the number of transactions into something like $O(n)$.
 
 Still in production phase so send all the bugs! Also, narrow usage goals so not cosmically robust
 
