@@ -12,6 +12,9 @@ import numpy as np
 #############################################################
 ############################################################
 class Graph:
+
+    tol = 1e-4 # roundoff error
+
     def __init__(self, nodeNames, deposits):
         self.nodeNames = nodeNames
         self.deposits = deposits
@@ -150,7 +153,9 @@ class Graph:
     def verifyFinalGraph(self):
         # verify total flow is same before and after simplification
         for i in range(self.nNodes):
-            assert self.totalFlow(self.originalMatrix,i) == self.totalFlow(self.matrix,i), \
+            originalFlow = self.totalFlow(self.originalMatrix,i)
+            finalFlow = self.totalFlow(self.matrix,i)
+            assert abs(originalFlow - finalFlow) <= self.tol, \
                 "Node " + str(i) + ", Total flow original " + str(self.totalFlow(self.originalMatrix,i)) + "\n" + \
                 "Node " + str(i) + ", Total flow simplified " + str(self.totalFlow(self.matrix,i))
 
