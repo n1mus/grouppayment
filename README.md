@@ -17,22 +17,20 @@ ORIGINAL UNIDIRECTIONAL GRAPH
  [11.868 21.968    nan 51.868 51.868]
  [ 0.     0.     0.       nan  0.   ]
  [ 0.     0.     0.     0.       nan]]
-Working...
+Iterating........
 SIMPLIFIED GRAPH
 [&apos;Akash&apos;, &apos;Bob&apos;, &apos;Cixun&apos;, &apos;David&apos;, &apos;Esther&apos;]
-[[   nan  0.     0.    38.232 40.   ]
- [ 0.       nan  0.     0.    29.9  ]
- [ 0.     0.       nan 85.704 51.868]
- [ 0.     2.168  0.       nan  0.   ]
- [ 0.     0.     0.     0.       nan]]
+[[    nan   0.      0.      0.     78.232]
+ [  0.        nan   0.      0.     27.732]
+ [  0.      0.        nan 137.572   0.   ]
+ [  0.      0.      0.        nan  15.804]
+ [  0.      0.      0.      0.        nan]]
 
 
-Akash gives David 38.232
-Akash gives Esther 40.0
-Bob gives Esther 29.9
-Cixun gives David 85.70400000000001
-Cixun gives Esther 51.868
-David gives Bob 2.1680000000000064
+Akash gives Esther 78.232
+Bob gives Esther 27.731999999999992
+Cixun gives David 137.572
+David gives Esther 15.80400000000001
 
 
 
