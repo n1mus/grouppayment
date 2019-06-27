@@ -83,41 +83,42 @@ class Graph:
         edge.parent.deleteOutgoingEdge(edge)
         edge.child.deleteIncomingEdge(edge)
 
+    def addEdge(self, A, B, weight=0):
+        edge = Edge(A, B, weight)
+        A.addOutgoingEdge(edge)
+        B.addIncomingEdge(edge)
 
     def reverseEdge(self, edge):
         edge.reverse()
 
 
-    def passOnTriangleOp(self):
+    def simplifyPassOn_op(self):
         for primNode in self.nodes:
             for interimNode in primNode.getChildren():
                 for tertNode in interimNode.getChildren():
-                    if primNode.isConnected(tertNode):
-                        moveWeight = primNode.getEdge(interimNode).weight
-                        interimNode.getEdge(tertNode).changeWeight(-moveWeight)
-                        self.deleteEdge(primNode.getEdge(interimNode))
+                    if not primNode.isConnected(tertNode):
+                        # check for switching between two-edge pass-on configurations
+                        if primNode.getEdge(interimNode).weight > interimNode.getEdge(tertNode).weight:
+                            continue
 
-                        if primNode.isParent(tertNode):
-                            primNode.getEdge(tertNode).changeWeight(moveWeight)
-                        elif primNode.isChild(tertNode):
-                            primNode.getEdge(tertNode).changeWeight(-moveWeight)
-                        else:
-                            assert False
+                        # create 0 edge
+                        self.addEdge(primNode,tertNode,0)
 
-                        self.checkNegZeroEdges()
+                    moveWeight = primNode.getEdge(interimNode).weight
+                    interimNode.getEdge(tertNode).changeWeight(-moveWeight)
+                    self.deleteEdge(primNode.getEdge(interimNode))
 
-                        return True
+                    if primNode.isParent(tertNode):
+                        primNode.getEdge(tertNode).changeWeight(moveWeight)
+                    elif primNode.isChild(tertNode):
+                        primNode.getEdge(tertNode).changeWeight(-moveWeight)
+                    else:
+                        assert False
+
+                    self.checkNegZeroEdges()
+
+                    return True
         return False
-
-
-    def passOnHigherPolygonOp(self):
-        """
-        TODO
-        Prove necessary? Algo?
-        Handle pass-ons in configurations more complicated than a triangle
-        :return:
-        """
-        pass
 
 
     def checkNegZeroEdges(self):
@@ -205,6 +206,9 @@ class Node:
         for edge in self.incomingEdges:
             if edge.parent == other:
                 return edge
+
+    def getWeight(self, other):
+        return self.getEdge(other).weight
 
     def sumOutgoing(self):
         sum = 0
@@ -305,8 +309,8 @@ def main(names = ["B","R","K","Je","Jo","S"],
     print("ORIGINAL UNIDIRECTIONAL GRAPH")
     graph.print()
 
-    print('Working',end='')
-    while graph.passOnTriangleOp():
+    print('Iterating',end='')
+    while graph.simplifyPassOn_op():
         print('.',end='')
     print()
 
